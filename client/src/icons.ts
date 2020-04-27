@@ -4,14 +4,24 @@ import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import {
 	faAlbumCollection as falAlbumCollection,
 	faBooks as falBooks,
-	faCameraRetro as falCameraRetro
+	faCameraRetro as falCameraRetro,
+	faSearch as falSearch
 } from '@fortawesome/pro-light-svg-icons';
 
 // Import Regular Icons
-// import {} from '@fortawesome/pro-regular-svg-icons';
+import {
+	faChevronDown as farChevronDown,
+	faChevronLeft as farChevronLeft,
+	faChevronRight as farChevronRight,
+	faChevronUp as farChevronUp
+} from '@fortawesome/pro-regular-svg-icons';
 
 // Import Solid Icons
-// import {} from '@fortawesome/pro-solid-svg-icons';
+import {
+	faAlbumCollection as fasAlbumCollection,
+	faBooks as fasBooks,
+	faCameraRetro as fasCameraRetro
+} from '@fortawesome/pro-solid-svg-icons';
 
 // Import Brand Icons
 // import {} from '@fortawesome/free-brands-svg-icons';
@@ -20,17 +30,27 @@ import {
 const fal = [
 	falAlbumCollection,
 	falBooks,
-	falCameraRetro
+	falCameraRetro,
+	falSearch
 ];
 
 // Combine Regular Icons
-// const far = [];
+const far = [
+	farChevronDown,
+	farChevronLeft,
+	farChevronRight,
+	farChevronUp
+];
 
 // Combine Solid Icons
-// const fas = [];
+const fas = [
+	fasAlbumCollection,
+	fasBooks,
+	fasCameraRetro
+];
 
 // Combine Brand Icons
 // const fab = [];
 
 // Export for Font Awesome library
-export const ICONS: IconDefinition[] = fal;
+export const ICONS: IconDefinition[] = fal.concat(far, fas);

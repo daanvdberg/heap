@@ -1,52 +1,85 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-	AppBar,
-	BottomNavigation,
-	BottomNavigationAction,
-	Button,
-	IconButton,
-	Toolbar,
-	Typography
-} from '@material-ui/core';
+import { AppBar, BottomNavigation, BottomNavigationAction } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
 
-const styles = makeStyles((theme: Theme) =>
+const styles = makeStyles(({ transitions }: Theme) =>
 	createStyles({
 		root: {
-			flexGrow: 1
+			flexGrow: 1,
 		},
-		menuButton: {
-			marginRight: theme.spacing(2)
+		actionRoot: {
+			'& .svg-inline--fa': {
+				width: 'auto',
+				fontSize: 21,
+				transform: 'scale(1)',
+				transition: transitions.create(['transform'], { duration: transitions.duration.complex })
+			},
+			'&$iconOnly': {
+				paddingTop: 6,
+				'& .svg-inline--fa': {
+					transform: 'scale(0.8)'
+				}
+			}
 		},
-		title: {
-			flexGrow: 1
-		}
+		action: {
+			display: 'none'
+		},
+		iconOnly: {}
 	})
 );
 
-function Navigation() {
+type Props = RouteComponentProps
 
-	const classes = styles();
+function Navigation({ history, location }: Props) {
 
-	const [value, setValue] = React.useState(0);
+	const c = styles();
+
+	useEffect(() => {
+		switch (location.pathname) {
+			case '/books': setValue(0); break;
+			case '/records': setValue(1); break;
+			case '/memories': setValue(2); break;
+			default: setValue(null);
+		}
+	}, [location]);
+
+	const [value, setValue] = useState<number | null>(null);
+
+	const handleChange = (event: React.ChangeEvent<{}>, newValue: any) => {
+		switch (newValue) {
+			case 0: history.push('/books'); break;
+			case 1: history.push('/records'); break;
+			case 2: history.push('/memories'); break;
+		}
+	}
 
 	return (
 		<AppBar position='fixed' color='primary' style={{ top: 'auto', bottom: 0 }} component='footer'>
 			<BottomNavigation
 				value={value}
-				onChange={(event, newValue) => {
-					setValue(newValue);
-				}}
-				showLabels
-				className={classes.root}
+				onChange={handleChange}
+				className={c.root}
 			>
-				<BottomNavigationAction label='Books' icon={<FontAwesomeIcon icon={['fal', 'books']} />} />
-				<BottomNavigationAction label='Records' icon={<FontAwesomeIcon icon={['fal', 'album-collection']} />} />
-				<BottomNavigationAction label='Memories' icon={<FontAwesomeIcon icon={['fal', 'camera-retro']} />} />
+				<BottomNavigationAction
+					label='Books'
+					icon={<FontAwesomeIcon icon={['fas', 'books']} fixedWidth />}
+					classes={{ root: c.actionRoot, iconOnly: c.iconOnly, label: c.action }}
+				/>
+				<BottomNavigationAction
+					label='Records'
+					icon={<FontAwesomeIcon icon={['fas', 'album-collection']} />}
+					classes={{ root: c.actionRoot, iconOnly: c.iconOnly, label: c.action }}
+				/>
+				<BottomNavigationAction
+					label='Memories'
+					icon={<FontAwesomeIcon icon={['fas', 'camera-retro']} />}
+					classes={{ root: c.actionRoot, iconOnly: c.iconOnly, label: c.action }}
+				/>
 			</BottomNavigation>
 		</AppBar>
 	);
 }
 
-export default Navigation;
+export default withRouter(Navigation);

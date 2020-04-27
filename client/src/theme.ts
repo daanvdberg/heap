@@ -16,6 +16,9 @@ const BACKGROUND = '#f4f1de';
 
 const ALTERNATE = '#f2cc8f';
 
+const HEADING_FONT = ['Montserat', 'Helvetica', 'Arial', 'sans-serif'].join(',');
+const BODY_FONT = ['Roboto', 'Helvetica', 'Arial', 'sans-serif'].join(',');
+
 export default createMuiTheme({
 	palette: {
 		primary: {
@@ -39,4 +42,37 @@ export default createMuiTheme({
 			disabled: TEXT_DISABLED
 		}
 	},
+	typography: {
+		fontFamily: BODY_FONT,
+		h1: {
+			fontFamily: HEADING_FONT,
+			fontSize: "2.25rem"
+		},
+		h2: {
+			fontFamily: HEADING_FONT,
+			fontSize: "2rem"
+		},
+		h3: {
+			fontFamily: HEADING_FONT,
+			fontSize: "1.75rem"
+		},
+		h4: {
+			fontFamily: HEADING_FONT,
+			fontSize: "1.5rem"
+		},
+		h5: {
+			fontFamily: HEADING_FONT,
+			fontSize: "1.25rem"
+		},
+		h6: {
+			fontFamily: HEADING_FONT,
+			fontSize: "1.125rem"
+		},
+		body1: {
+			fontWeight: 300
+		},
+		body2: {
+			fontWeight: 300
+		}
+	}
 });
