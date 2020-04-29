@@ -15,6 +15,7 @@
 	},
 	"scripts": {
 		"start": "nodemon server.js && cd client && yarn start",
+		"heroku-prebuild": "./config/heroku_install",
 		"heroku-postbuild": "cd client && yarn && yarn start"
 	}
 }
