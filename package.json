@@ -14,7 +14,7 @@
 		"nodemon": "^2.0.3"
 	},
 	"scripts": {
-		"start": "nodemon server.js && cd client yarn start",
-		"heroku-postbuild": "cd client yarn && yarn start"
+		"start": "nodemon server.js && cd client && yarn start",
+		"heroku-postbuild": "cd client && yarn && yarn start"
 	}
 }
