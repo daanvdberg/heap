@@ -2,7 +2,7 @@
 	"name": "heap-server",
 	"version": "1.0.0",
 	"description": "Heap Server",
-	"main": "client/src/index.js",
+	"main": "index.js",
 	"author": "Daan van den Berg",
 	"license": "MIT",
 	"dependencies": {
@@ -14,8 +14,8 @@
 		"nodemon": "^2.0.3"
 	},
 	"scripts": {
-		"start": "nodemon server.js && cd client && yarn start",
+		"start": "node index.js",
 		"heroku-prebuild": "./config/heroku_install.sh",
-		"heroku-postbuild": "cd client && yarn && yarn start"
+		"heroku-postbuild": "cd client && yarn && yarn build"
 	}
 }
