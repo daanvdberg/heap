@@ -2,7 +2,7 @@
 	"name": "heap-server",
 	"version": "1.0.0",
 	"description": "Heap Server",
-	"main": "index.js",
+	"main": "client/src/index.js",
 	"author": "Daan van den Berg",
 	"license": "MIT",
 	"dependencies": {
