@@ -1,5 +1,5 @@
 import * as mongoose from 'mongoose';
-import { BookImage } from '../../client/src/containers/BookProvider/types';
+import { BookImage } from '../interfaces/Book';
 
 const BookSchema = new mongoose.Schema({
 	bookID: { type: String, required: true, unique: true },

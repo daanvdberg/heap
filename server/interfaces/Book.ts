@@ -9,3 +9,9 @@ export interface IBook {
 	published: Date;
 	isbn: string;
 }
+
+export type BookImage = {
+	smallThumbnail?: string;
+	thumbnail?: string;
+	largeThumbnail?: string
+}
