@@ -1,28 +1,12 @@
 import React from 'react';
 import {
 	Route,
-	RouteComponentProps,
 	RouteProps as ReactRouteProps
 } from 'react-router-dom';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Home from './containers/Home';
 import Books from './containers/Books';
 import Memories from './containers/Memories';
 import Records from './containers/Records';
-
-const styles = makeStyles((theme: Theme) =>
-	createStyles({
-		root: {
-			flexGrow: 1
-		},
-		menuButton: {
-			marginRight: theme.spacing(2)
-		},
-		title: {
-			flexGrow: 1
-		}
-	})
-);
 
 export interface RouteProps extends ReactRouteProps {
 	title?: string;
@@ -31,7 +15,7 @@ export interface RouteProps extends ReactRouteProps {
 
 type Props = RouteProps
 
-const RouteWithSubRoutes = ({ path, title, component: Component, routes: childRoutes }: Props) => (
+const RouteWithSubRoutes = ({ path, component: Component, routes: childRoutes }: Props) => (
 	<Route
 		path={path}
 		//@ts-ignore
@@ -42,6 +26,7 @@ const RouteWithSubRoutes = ({ path, title, component: Component, routes: childRo
 const routes = {
 	home: '/',
 	books: '/books',
+	booksQuery: '/books/:type/:query',
 	records: '/records',
 	memories: '/memories'
 }
@@ -53,7 +38,7 @@ const routeConfig: RouteProps[] = [
 		component: Home
 	},
 	{
-		path: routes.books,
+		path: [routes.booksQuery, routes.books],
 		title: 'Books',
 		component: Books
 	},

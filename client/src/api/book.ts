@@ -23,10 +23,9 @@ class BookApi extends Api {
 			const state: BookData[] = data;
 
 			return state;
-		})
-			.catch((error: AxiosError) => {
-				throw error;
-			});
+		}).catch((error: AxiosError) => {
+			throw error;
+		});
 	}
 }
 

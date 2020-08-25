@@ -16,8 +16,8 @@ const BACKGROUND = '#f4f1de';
 
 const ALTERNATE = '#f2cc8f';
 
-const HEADING_FONT = ['Montserat', 'Helvetica', 'Arial', 'sans-serif'].join(',');
-const BODY_FONT = ['Roboto', 'Helvetica', 'Arial', 'sans-serif'].join(',');
+const HEADING_FONT = ['Signika Negative', 'Helvetica', 'Arial', 'sans-serif'].join(',');
+const BODY_FONT = ['Open Sans', 'Helvetica', 'Arial', 'sans-serif'].join(',');
 
 export default createMuiTheme({
 	palette: {
@@ -69,10 +69,16 @@ export default createMuiTheme({
 			fontSize: "1.125rem"
 		},
 		body1: {
-			fontWeight: 300
+			fontWeight: 400
 		},
 		body2: {
-			fontWeight: 300
+			fontWeight: 400
+		},
+		subtitle1: {
+			fontWeight: 600
+		},
+		subtitle2: {
+			fontWeight: 600
 		}
 	}
 });

@@ -1,5 +1,6 @@
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import React, { Fragment } from 'react';
+import { BookImage } from '../../containers/BookProvider/types';
 
 const styles = makeStyles(
 	createStyles({
@@ -10,16 +11,25 @@ const styles = makeStyles(
 	})
 );
 
-function BookCover({ id, size = 'M', alt = '' }: Props) {
+function BookCover({ image, size = 'default', alt = '' }: Props) {
+
 	const c = styles();
-	if (!id) return <Fragment />;
-	const url = `https://covers.openlibrary.org/b/olid/${id}-${size}.jpg`
+	
+	if (!image) return <Fragment />;
+	
+	let url = image.thumbnail;
+	if (size === 'small' && image.smallThumbnail) {
+		url = image.smallThumbnail;
+	}
+	if (size === 'large' && image.largeThumbnail) {
+		url = image.largeThumbnail;
+	}
 	return <img src={url} alt={alt} className={c.img} />;
 }
 
 interface DirectProps {
-	id: string
-	size?: string
+	image: BookImage
+	size: 'large' | 'default' | 'small'
 	alt?: string
 }
 

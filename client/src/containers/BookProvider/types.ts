@@ -4,11 +4,28 @@ const base = 'BOOK';
 export type BookType = 'title' | 'author';
 export interface BookQuery { query: string, type: BookType }
 
+export type BookImage = {
+	smallThumbnail?: string;
+	thumbnail?: string;
+	largeThumbnail?: string
+}
+
 export interface BookData {
-	id: string
-	title: string
-	author: string
-	image: string
+	_id?: string;
+	bookID: string;
+	etag: string;
+	title: string;
+	subtitle: string;
+	description: string;
+	author: string;
+	authors: string[];
+	publisher: string;
+	publishDate: Date;
+	pageCount: number;
+	categories: string[];
+	images: BookImage;
+	rating: number;
+	ratingCount: number;
 }
 
 // Interface for store state object

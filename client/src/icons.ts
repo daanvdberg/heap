@@ -20,7 +20,8 @@ import {
 import {
 	faAlbumCollection as fasAlbumCollection,
 	faBooks as fasBooks,
-	faCameraRetro as fasCameraRetro
+	faCameraRetro as fasCameraRetro,
+	faCaretDown as fasCaretDown
 } from '@fortawesome/pro-solid-svg-icons';
 
 // Import Brand Icons
@@ -46,7 +47,8 @@ const far = [
 const fas = [
 	fasAlbumCollection,
 	fasBooks,
-	fasCameraRetro
+	fasCameraRetro,
+	fasCaretDown
 ];
 
 // Combine Brand Icons

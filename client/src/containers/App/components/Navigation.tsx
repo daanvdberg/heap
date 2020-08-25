@@ -37,11 +37,14 @@ function Navigation({ history, location }: Props) {
 	const c = styles();
 
 	useEffect(() => {
-		switch (location.pathname) {
-			case '/books': setValue(0); break;
-			case '/records': setValue(1); break;
-			case '/memories': setValue(2); break;
-			default: setValue(null);
+		if (location.pathname.startsWith('/books')) {
+			setValue(0);
+		} else if (location.pathname.startsWith('/records')) {
+			setValue(1);
+		} else if (location.pathname.startsWith('/memories')) {
+			setValue(2);
+		} else {
+			setValue(null);
 		}
 	}, [location]);
 
