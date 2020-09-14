@@ -25,8 +25,7 @@
 	"scripts": {
 		"start": "nodemon server/index.ts",
 		"start:prod": "node server/index.ts",
-		"heroku-prebuild": "./config/heroku_install.sh",
-		"heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
+		"heroku-prebuild": "./config/heroku_install.sh"
 	},
 	"devDependencies": {
 		"@types/mongodb": "^3.5.14",
