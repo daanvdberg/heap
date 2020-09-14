@@ -38,4 +38,4 @@ interface IBook extends mongoose.Document {
 
 const Book = mongoose.model<IBook>('Book', BookSchema);
 
-module.exports = Book;
+export default Book;

@@ -1,6 +1,7 @@
-const BookAPIs = require('./book');
+import { Express } from 'express';
+import BookAPIs from './book';
 
 // Combine various API routes
-module.exports = function(app) {
+export default function(app: Express) {
 	BookAPIs(app);
 }

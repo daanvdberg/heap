@@ -6,7 +6,12 @@
 	"author": "Daan van den Berg",
 	"license": "MIT",
 	"dependencies": {
+		"@types/axios": "^0.14.0",
+		"@types/cors": "^2.8.7",
+		"@types/express": "^4.17.7",
+		"@types/lodash": "^4.14.160",
 		"axios": "^0.19.2",
+		"cors": "^2.8.5",
 		"dotenv": "^8.2.0",
 		"express": "^4.17.1",
 		"express-graphql": "^0.9.0",
@@ -27,6 +32,7 @@
 		"@types/mongodb": "^3.5.14",
 		"@types/mongoose": "^5.7.14",
 		"@types/node": "^13.13.4",
-		"@types/validator": "^13.0.0"
+		"@types/validator": "^13.0.0",
+		"tslint": "^6.1.3"
 	}
 }

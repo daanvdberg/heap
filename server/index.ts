@@ -1,19 +1,21 @@
-const express = require('express');
-const path = require('path');
+import express from 'express';
+import cors from 'cors';
+import initAPI from './api';
 
 require('dotenv').config();
 
 const app = express();
-const port = process.env.PORT || 5000;
-require('./api')(app);
 
-// Serve the static files from the React app
-app.use(express.static(path.join(__dirname, 'client/build')));
+const corsOptions = {
+	origin: 'http://localhost:3000',
+	optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+	credentials: true
+};
+
+app.use(cors(corsOptions));
+
+const port = process.env.PORT || 5000;
+initAPI(app);
 
 // console.log that your server is up and running
 app.listen(port, () => console.log(`Listening on port ${port}`));
-
-// Handles any requests that don't match the ones above
-app.get('*', (req,res) =>{
-	res.sendFile(path.join(__dirname+'/client/build/index.html'));
-});

@@ -1,10 +1,11 @@
-const axios = require('axios').default;
-const get = require('lodash').get;
-const Book = require('../models/book');
+import { Express, Response } from 'express';
+import axios from 'axios';
+import { get } from 'lodash';
+import Book from '../models/book';
 
-module.exports = function(app) {
+export default function(app: Express) {
 
-	app.get('/api/book/search', (req, res) => {
+	app.get('/api/book/search', (req: any, res: Response) => {
 		if (!req.query.title && !req.query.author) {
 			res.send({ express: 'Book search term missing' });
 		}
@@ -19,7 +20,7 @@ module.exports = function(app) {
 			.then(function (response) {
 				console.log(response.data.items[0]);
 				// handle success
-				const result = get(response, 'data.items', []).map((i) => ({
+				const result = get(response, 'data.items', []).map((i: any) => ({
 					bookID: i.id,
 					etag: i.etag,
 					title: i.volumeInfo.title,
@@ -48,13 +49,15 @@ module.exports = function(app) {
 	});
 
 	app.post('/api/book', (req, res) => {
-		const book = new Book(req.body)
+		const book = new Book(req.body);
 
-		book.save().then(() => {
-			res.status(201).send(book)
-		}).catch((e) => {
-			res.status(400).send(e)
-		});
+		console.log(req);
+
+		// book.save().then(() => {
+		// 	res.status(201).send(book)
+		// }).catch((e) => {
+		// 	res.status(400).send(e)
+		// });
 	});
 
 }
